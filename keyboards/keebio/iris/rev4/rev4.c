@@ -16,3 +16,13 @@ void eeconfig_init_kb(void) {
     eeconfig_update_kb(0);
     eeconfig_init_user();
 }
+
+void encoder_update_kb(uint8_t index, bool clockwise) {
+    if (index == 1) {
+        if (clockwise) {
+            tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);  
+        }
+    }
+}
