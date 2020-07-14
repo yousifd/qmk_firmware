@@ -19,10 +19,18 @@ void eeconfig_init_kb(void) {
 
 void encoder_update_kb(uint8_t index, bool clockwise) {
     if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);  
+        if (layer_state_is(0)) {
+            if (clockwise) {
+                tap_code(KC_VOLU);
+            } else {
+                tap_code(KC_VOLD);
+            }
+        } else if (layer_state_is(1)) {
+            if (clockwise) {
+                tap_code(KC_MNXT);
+            } else {
+                tap_code(KC_MPRV);
+            }
         }
     }
 }
